@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Coffee & WiFi Spots{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+
+  <!-- Hero Section -->
+  <div class="row align-items-center">
+    <div class="col-md-7">
+      <h1 class="featurette-heading fw-bold mb-3">
+        Looking for the perfect cafe?
+        <span class="text-muted d-block">You've come to the right place.</span>
+      </h1>
+      <p class="lead text-secondary">
+        Whether it's a perfect cup of coffee, a nice place to chat, or that productive work session,
+        you'll be able to find the right cafe near you!
+      </p>
+      <a class="btn btn-primary btn-lg mt-2" href="{{url_for('view')}}">Take me there! »</a>
+    </div>
+
+    <div class="col-md-5 text-center">
+      <img src="{{ url_for('static', filename='images/People Sitting Inside Establishment.jpg') }}"
+           alt="Cafe Image" class="img-fluid hero-img">
+    </div>
+  </div>
+</div>
+
+{% endblock %}

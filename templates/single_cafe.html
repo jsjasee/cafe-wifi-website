@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ cafe.name }}{% endblock %}
+
+{% block content %}
+<style>
+  .cafe-banner {
+    height: 350px;
+    background-image: url('{{ cafe.img_url }}');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+
+  .cafe-info {
+    padding: 2rem;
+    border-radius: 10px;
+    background: #ffffffcc;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    margin-top: -60px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .cafe-info h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .info-label {
+    font-weight: 600;
+    color: #444;
+  }
+
+  .back-btn {
+    margin-top: 1.5rem;
+  }
+</style>
+
+<div class="container mt-4">
+  <div class="cafe-banner"></div>
+
+  <div class="cafe-info">
+    <h2>{{ cafe.name }}</h2>
+    <p class="text-muted mb-2"><i class="bi bi-geo-alt"></i> {{ cafe.location }}</p>
+
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <p><span class="info-label">WiFi:</span> {{ '✅' if cafe.has_wifi == 1 else '❌' }}</p>
+        <p><span class="info-label">Sockets:</span> {{ '✅' if cafe.has_sockets == 1 else '❌' }}</p>
+        <p><span class="info-label">Toilet:</span> {{ '✅' if cafe.has_toilet == 1 else '❌' }}</p>
+      </div>
+      <div class="col-sm-6">
+        <p><span class="info-label">Calls Allowed:</span> {{ '✅' if cafe.can_take_calls == 1 else '❌' }}</p>
+        <p><span class="info-label">Seats:</span> {{ cafe.seats }}</p>
+        <p><span class="info-label">Coffee Price:</span> {{ cafe.coffee_price }}</p>
+      </div>
+    </div>
+
+    <a href="{{ url_for('view') }}" class="btn btn-secondary back-btn">← Back to All Cafes</a>
+  </div>
+</div>
+{% endblock %}
